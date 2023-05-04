@@ -8,6 +8,7 @@ public class Block {
     private ArrayList<Transaction> transactions = new ArrayList<Transaction>();
     private long timestamp;
 
+
     public Block(String previousHash) {
         this.previousHash = previousHash;
         this.timestamp = new Date().getTime();
@@ -65,9 +66,15 @@ public class Block {
         return hash;
     }
 
+    public void setHash(String Hash) {
+        this.hash = Hash;
+    }
+
     public String getPreviousHash() {
         return previousHash;
     }
+
+
 }
 
 

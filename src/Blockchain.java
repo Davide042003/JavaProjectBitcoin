@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Blockchain {
+public class Blockchain{
     private ArrayList<Block> chain = new ArrayList<Block>();
 
     public Blockchain() {
@@ -42,5 +42,9 @@ public class Blockchain {
         if (otherChain.chain.size() > chain.size()) {
             chain = otherChain.chain;
         }
+    }
+
+    public Block getLatestBlock() {
+        return chain.get(chain.size() - 1);
     }
 }
