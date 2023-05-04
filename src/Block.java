@@ -60,4 +60,15 @@ public class Block {
         }
         return true;
     }
+
+    public String getHash() {
+        return hash;
+    }
+
+    public String getPreviousHash() {
+        return previousHash;
+    }
 }
+
+
+
