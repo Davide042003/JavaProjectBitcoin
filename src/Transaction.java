@@ -1,4 +1,5 @@
 import java.security.*;
+import java.util.ArrayList;
 
 public class Transaction {
     private String transactionId;
@@ -8,7 +9,7 @@ public class Transaction {
     private byte[] signature;
     private static int sequence = 0;
 
-    public Transaction(PublicKey sender, PublicKey recipient, float value, Transaction[] inputTransactions, PrivateKey privateKey) {
+    public Transaction(PublicKey sender, PublicKey recipient, float value, ArrayList<Transaction> inputTransactions, PrivateKey privateKey) {
         this.sender = sender;
         this.recipient = recipient;
         this.value = value;
@@ -37,7 +38,7 @@ public class Transaction {
         return null;
     }
 
-    private byte[] signTransaction(PrivateKey privateKey, Transaction[] inputTransactions) {
+    private byte[] signTransaction(PrivateKey privateKey, ArrayList<Transaction> inputTransactions) {
         String data = getTransactionInputString(inputTransactions) + recipient.toString() + Float.toString(value);
         try {
             Signature signature = Signature.getInstance("SHA256withRSA");
@@ -50,7 +51,7 @@ public class Transaction {
         return null;
     }
 
-    private String getTransactionInputString(Transaction[] inputTransactions) {
+    private String getTransactionInputString(ArrayList<Transaction> inputTransactions) {
         StringBuffer inputString = new StringBuffer();
         for (Transaction tx : inputTransactions) {
             inputString.append(tx.transactionId);
@@ -58,7 +59,7 @@ public class Transaction {
         return inputString.toString();
     }
 
-    public boolean verifyTransaction(Transaction[] inputTransactions) {
+    public boolean verifyTransaction(ArrayList<Transaction> inputTransactions) {
         String data = getTransactionInputString(inputTransactions) + recipient.toString() + Float.toString(value);
         try {
             Signature signature = Signature.getInstance("SHA256withRSA");
