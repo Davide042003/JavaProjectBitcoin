@@ -10,6 +10,7 @@ public class Miner {
     public Block mine() {
         Block block = new Block(blockchain.getLatestBlock().getHash());
 
+
         while (!block.getHash().substring(0, difficulty).equals(Utils.zeros(difficulty))) {
             block.setHash(block.calculateHash());
         }
