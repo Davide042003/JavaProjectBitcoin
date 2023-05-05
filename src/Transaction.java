@@ -71,23 +71,15 @@ public class Transaction {
         }
         return false;
     }
-
-    public boolean hasEnoughValue(Transaction[] inputTransactions) {
-        float totalInputValue = 0;
-        for (Transaction tx : inputTransactions) {
-            if (tx.recipient.equals(sender)) {
-                totalInputValue += tx.value;
-            }
-        }
-        return totalInputValue >= value;
+    public float getValue(){
+        return value;
     }
 
-    public boolean hasAlreadySpent(Transaction[] inputTransactions) {
-        for (Transaction tx : inputTransactions) {
-            if (tx.sender.equals(sender)) {
-                return true;
-            }
-        }
-        return false;
+    public PublicKey getRecipient(){
+        return recipient;
+    }
+
+    public PublicKey getSender(){
+        return sender;
     }
 }

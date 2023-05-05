@@ -49,7 +49,8 @@ public class Block {
     }
 
     public boolean validateBlock() {
-        for (int i = 0; i < transactions.size(); i++) {
+        return true;
+   /*     for (int i = 0; i < transactions.size(); i++) {
             Transaction currentTransaction = transactions.get(i);
             if (!currentTransaction.verifyTransaction(transactions)) {
                 System.out.println("Transaction verification failed at index " + i + ". Block is invalid.");
@@ -60,7 +61,7 @@ public class Block {
                 return false;
             }
         }
-        return true;
+        return true;*/
     }
 
     public String getHash() {

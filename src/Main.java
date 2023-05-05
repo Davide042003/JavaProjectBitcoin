@@ -4,6 +4,7 @@ public class Main {
         Blockchain blockchain = new Blockchain();
         Blockchain blockchain2 = new Blockchain();
 
+        Agent agent = new Agent();
         // Create a miner and add some transactions to the blockchain
         Miner miner = new Miner(3 ,blockchain);
         Miner miner2 = new Miner(5 ,blockchain2);
@@ -16,7 +17,13 @@ public class Main {
         miner.mine();
         miner2.mine();
 
+        miner.sendMoney(agent, 1);
+        System.out.println("miner balance : " + miner.calculateBalance());
+        System.out.println("agent balance : " + agent.calculateBalance());
+
         // Print out the blockchain to verify that the transactions were added
+        System.out.println("blockchain is valid: " + blockchain.isValid());
+        System.out.println("blockchain2 is valid: " + blockchain2.isValid());
         System.out.println(blockchain.toString());
         System.out.println(blockchain2.toString());
 
