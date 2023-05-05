@@ -7,13 +7,13 @@ public class Block {
     private String hash;
     private ArrayList<Transaction> transactions = new ArrayList<Transaction>();
     private long timestamp;
-
     private int nonce;
 
     public Block(String previousHash) {
         this.previousHash = previousHash;
         this.timestamp = new Date().getTime();
         this.hash = calculateHash();
+        this.nonce = 0;
     }
 
     public String calculateHash() {
