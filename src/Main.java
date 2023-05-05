@@ -5,8 +5,8 @@ public class Main {
         Blockchain blockchain2 = new Blockchain();
 
         // Create a miner and add some transactions to the blockchain
-        Miner miner = new Miner(0 ,blockchain);
-        Miner miner2 = new Miner(0 ,blockchain2);
+        Miner miner = new Miner(3 ,blockchain);
+        Miner miner2 = new Miner(5 ,blockchain2);
         /*Transaction tx1 = new Transaction("Alice", "Bob", 10);
         Transaction tx2 = new Transaction("Bob", "Charlie", 5);
         Transaction tx3 = new Transaction("Charlie", "Alice", 3);*/

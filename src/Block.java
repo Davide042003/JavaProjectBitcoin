@@ -8,6 +8,7 @@ public class Block {
     private ArrayList<Transaction> transactions = new ArrayList<Transaction>();
     private long timestamp;
 
+    private int nonce;
 
     public Block(String previousHash) {
         this.previousHash = previousHash;
@@ -16,7 +17,7 @@ public class Block {
     }
 
     public String calculateHash() {
-        String data = previousHash + Long.toString(timestamp) + transactions.toString();
+        String data = previousHash + Long.toString(timestamp) + Integer.toString(nonce) + transactions.toString();
         return applySha256(data);
     }
 
@@ -74,7 +75,9 @@ public class Block {
         return previousHash;
     }
 
-
+    public void incrementNonce() {
+        nonce++;
+    }
 }
 
 
