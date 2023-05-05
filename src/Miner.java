@@ -1,8 +1,9 @@
-public class Miner {
+public class Miner extends Wallet {
     private int difficulty;
     private Blockchain blockchain;
 
     public Miner(int difficulty, Blockchain blockchain) {
+        super();
         this.difficulty = difficulty;
         this.blockchain = blockchain;
     }

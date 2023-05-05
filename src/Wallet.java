@@ -1,10 +1,10 @@
 import java.security.*;
 
-public class Agent {
+public class Wallet {
     private PublicKey publicKey;
     private PrivateKey privateKey;
 
-    public Agent() {
+    public Wallet() {
         try {
             // Generate key pair
             KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
