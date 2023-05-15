@@ -48,22 +48,6 @@ public class Block {
         return true;
     }
 
-    public boolean validateBlock() {
-        return true;
-   /*     for (int i = 0; i < transactions.size(); i++) {
-            Transaction currentTransaction = transactions.get(i);
-            if (!currentTransaction.verifyTransaction(transactions)) {
-                System.out.println("Transaction verification failed at index " + i + ". Block is invalid.");
-                return false;
-            }
-            if (currentTransaction.hasAlreadySpent(transactions.toArray(new Transaction[transactions.size()]))) {
-                System.out.println("Transaction at index " + i + " has already spent cryptocurrency. Block is invalid.");
-                return false;
-            }
-        }
-        return true;*/
-    }
-
     public String getHash() {
         return hash;
     }
@@ -76,10 +60,11 @@ public class Block {
         return previousHash;
     }
 
+    public ArrayList<Transaction> getTransactions() {
+        return transactions;
+    }
+
     public void incrementNonce() {
         nonce++;
     }
 }
-
-
-

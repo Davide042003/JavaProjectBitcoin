@@ -29,10 +29,6 @@ public class Blockchain{
                 System.out.println("Previous hash does not match hash of previous block for block " + i + ".");
                 return false;
             }
-
-            if (!currentBlock.validateBlock()) {
-                return false;
-            }
         }
 
         return true;
@@ -47,4 +43,8 @@ public class Blockchain{
     public Block getLatestBlock() {
         return chain.get(chain.size() - 1);
     }
+    public ArrayList<Block> getChain(){
+        return chain;
+    }
+
 }

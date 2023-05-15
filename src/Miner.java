@@ -5,7 +5,7 @@ public class Miner extends Wallet {
     private Blockchain blockchain;
 
     public Miner(int difficulty, Blockchain blockchain) {
-        super();
+        super(blockchain);
         this.difficulty = difficulty;
         this.blockchain = blockchain;
     }
@@ -18,11 +18,11 @@ public class Miner extends Wallet {
             block.setHash(block.calculateHash());
         }
 
-        Transaction rewardTransaction = new Transaction(this.getPublicKey(), this.getPublicKey(), 10.0f, this.getInputTransactions(), this.getPrivateKey());
+        Transaction rewardTransaction = new Transaction(this.getPublicKey(), this.getPublicKey(), 10.0f, this.getInputTransactions(),getPrivateKey());
         this.increaseBalance(rewardTransaction);
         block.addTransaction(rewardTransaction);
 
-        System.out.println("Block mined with hash: " + block.getHash() + " actual Balance: " + this.calculateBalance());
+        System.out.println("Block mined with hash: " + block.getHash() + " actual Balance of miner is : " + this.calculateBalance());
         blockchain.addBlock(block);
 
         return block;

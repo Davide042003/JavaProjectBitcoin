@@ -1,31 +1,38 @@
+import java.security.PublicKey;
+
 public class Main {
+
+
     public static void main(String[] args) {
-        // Create a blockchain with a genesis block
+
         Blockchain blockchain = new Blockchain();
-        Blockchain blockchain2 = new Blockchain();
-
-        Agent agent = new Agent();
-        // Create a miner and add some transactions to the blockchain
+        Blockchain second_blockchain = new Blockchain();
         Miner miner = new Miner(3 ,blockchain);
-        Miner miner2 = new Miner(5 ,blockchain2);
-        /*Transaction tx1 = new Transaction("Alice", "Bob", 10);
-        Transaction tx2 = new Transaction("Bob", "Charlie", 5);
-        Transaction tx3 = new Transaction("Charlie", "Alice", 3);*/
+        Miner second_miner = new Miner(5, second_blockchain);
 
-        // Add the transactions to the blockchain
-        System.out.println("Davide is dunky");
+        Agent agent = new Agent(blockchain);
+        Agent second_agent = new Agent(blockchain);
+        Agent third_agent = new Agent(second_blockchain);
+
         miner.mine();
-        miner2.mine();
+        second_miner.mine();
 
-        miner.sendMoney(agent, 1);
+        miner.sendMoney(agent, 5);
+        second_miner.sendMoney(second_agent, 6);
+        agent.sendMoney(third_agent, 3);
+        third_agent.sendMoney(second_agent, 1);
+        second_agent.sendMoney(agent,2);
+
         System.out.println("miner balance : " + miner.calculateBalance());
+        System.out.println("second miner balance : " + second_miner.calculateBalance());
         System.out.println("agent balance : " + agent.calculateBalance());
+        System.out.println("second agent balance : " + second_agent.calculateBalance());
+        System.out.println("third agent balance : " + third_agent.calculateBalance());
 
-        // Print out the blockchain to verify that the transactions were added
         System.out.println("blockchain is valid: " + blockchain.isValid());
-        System.out.println("blockchain2 is valid: " + blockchain2.isValid());
+        System.out.println("second_blockchain is valid: " + second_blockchain.isValid());
         System.out.println(blockchain.toString());
-        System.out.println(blockchain2.toString());
+        System.out.println(second_blockchain.toString());
 
     }
 }

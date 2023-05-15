@@ -1,5 +1,6 @@
 import java.security.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Transaction {
     private String transactionId;
@@ -38,7 +39,7 @@ public class Transaction {
         return null;
     }
 
-    private byte[] signTransaction(PrivateKey privateKey, ArrayList<Transaction> inputTransactions) {
+    public byte[] signTransaction(PrivateKey privateKey, ArrayList<Transaction> inputTransactions) {
         String data = getTransactionInputString(inputTransactions) + recipient.toString() + Float.toString(value);
         try {
             Signature signature = Signature.getInstance("SHA256withRSA");
@@ -51,7 +52,7 @@ public class Transaction {
         return null;
     }
 
-    private String getTransactionInputString(ArrayList<Transaction> inputTransactions) {
+    private String getTransactionInputString(List<Transaction> inputTransactions) {
         StringBuffer inputString = new StringBuffer();
         for (Transaction tx : inputTransactions) {
             inputString.append(tx.transactionId);
@@ -59,7 +60,7 @@ public class Transaction {
         return inputString.toString();
     }
 
-    public boolean verifyTransaction(ArrayList<Transaction> inputTransactions) {
+    public boolean verifyTransaction(List<Transaction> inputTransactions) {
         String data = getTransactionInputString(inputTransactions) + recipient.toString() + Float.toString(value);
         try {
             Signature signature = Signature.getInstance("SHA256withRSA");
@@ -71,6 +72,7 @@ public class Transaction {
         }
         return false;
     }
+
     public float getValue(){
         return value;
     }
