@@ -18,7 +18,7 @@ public class Miner extends Wallet {
             block.setHash(block.calculateHash());
         }
 
-        Transaction rewardTransaction = new Transaction(this.getPublicKey(), this.getPublicKey(), 10.0f, this.getInputTransactions(), this.getPrivateKey());
+        Transaction rewardTransaction = new Transaction(this.getPublicKey(), this.getPublicKey(), 10.0f, this.getInputTransactions(),getPrivateKey());
         this.increaseBalance(rewardTransaction);
         block.addTransaction(rewardTransaction);
 

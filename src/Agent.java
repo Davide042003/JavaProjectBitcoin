@@ -1,5 +1,3 @@
-public class Agent extends Wallet{
-    public Agent() {
 
-    }
+public class Agent extends Wallet{
 }

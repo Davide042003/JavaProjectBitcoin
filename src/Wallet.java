@@ -56,7 +56,7 @@ public class Wallet {
 
     public void sendMoney(Wallet recipient, float amount) {
         if (hasEnoughMoney(amount)) {
-            Transaction transaction = new Transaction(this.publicKey, recipient.getPublicKey(), amount, this.inputTransactions, this.privateKey);
+            Transaction transaction = new Transaction(this.publicKey, recipient.getPublicKey(), amount, this.inputTransactions, privateKey);
             if (transaction.verifyTransaction(this.inputTransactions)) {
                 this.outputTransactions.add(transaction);
                 recipient.inputTransactions.add(transaction);

@@ -1,5 +1,6 @@
 import java.security.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Transaction {
     private String transactionId;
@@ -38,7 +39,7 @@ public class Transaction {
         return null;
     }
 
-    private byte[] signTransaction(PrivateKey privateKey, ArrayList<Transaction> inputTransactions) {
+    public byte[] signTransaction(PrivateKey privateKey, ArrayList<Transaction> inputTransactions) {
         String data = getTransactionInputString(inputTransactions) + recipient.toString() + Float.toString(value);
         try {
             Signature signature = Signature.getInstance("SHA256withRSA");
@@ -71,6 +72,21 @@ public class Transaction {
         }
         return false;
     }
+
+
+    public boolean checkDoubleSpending(List<Transaction> inputs) {
+        float totalInput = 0;
+        for (Transaction input : inputs) {
+            if (input.recipient.equals(sender)) {
+                totalInput += input.value;
+            } else {
+                return false; // Invalid input
+            }
+        }
+        return totalInput >= value; // Check if the transaction is valid
+    }
+
+
     public float getValue(){
         return value;
     }

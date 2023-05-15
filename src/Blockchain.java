@@ -31,6 +31,7 @@ public class Blockchain{
             }
 
             if (!currentBlock.validateBlock()) {
+                System.out.println("The bitcoin is already spent.");
                 return false;
             }
         }
