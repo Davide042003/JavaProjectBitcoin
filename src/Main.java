@@ -13,7 +13,9 @@ public class Main {
         Agent third_agent = new Agent(second_blockchain);
 
         miner.mine();
+      //  second_blockchain.resolveConflicts(blockchain);
         second_miner.mine();
+     //   blockchain.resolveConflicts(second_blockchain);
 
         miner.sendMoney(agent, 5);
         second_miner.sendMoney(second_agent, 6);

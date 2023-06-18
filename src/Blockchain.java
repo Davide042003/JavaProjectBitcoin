@@ -46,6 +46,7 @@ public class Blockchain {
     public void resolveConflicts(Blockchain otherChain) {
         if (otherChain.chain.size() > chain.size()) {
             chain = otherChain.chain;
+            System.out.println("Changed blockchain");
         }
     }
 
