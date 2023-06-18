@@ -1,7 +1,5 @@
 import java.util.ArrayList;
 
-import java.util.ArrayList;
-
 public class Blockchain {
     private ArrayList<Block> chain = new ArrayList<Block>(); // ArrayList to hold the blocks of the blockchain
 

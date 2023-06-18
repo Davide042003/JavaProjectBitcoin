@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class Miner extends Wallet {
     private int difficulty; // Represents the level of difficulty for mining a block
     private Blockchain blockchain; // Represents the blockchain on which the miner operates
